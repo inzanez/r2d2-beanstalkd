@@ -1,5 +1,6 @@
 [package]
 name = "r2d2-beanstalkd"
+description = "Beanstalk support for the r2d2 connection pool"
 version = "0.1.0"
 authors = ["Rafael Aggeler <r.aggeler@gmx.net>"]
 edition = "2018"
