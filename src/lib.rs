@@ -16,12 +16,10 @@ mod tests {
             .build(m)
             .expect("Connection failed");
 
-        let c = pool.get();
+        let mut c = pool.get().expect("Could not get connection");
+        let tubes = c.tubes().expect("Could not retrieve tubes");
 
-        match c {
-            Ok(_) => println!("Valid"),
-            Err(e) => println!("{}", e),
-        }
+        assert_eq!(tubes.contains(&"default".to_string()), true);
     }
 
     #[test]
@@ -34,11 +32,6 @@ mod tests {
             .build(m)
             .expect("Connection failed");
 
-        let c = pool.get();
-
-        match c {
-            Ok(_) => println!("Valid"),
-            Err(e) => println!("{}", e),
-        }
+        let _c = pool.get().expect("Could not get connection");
     }
 }
